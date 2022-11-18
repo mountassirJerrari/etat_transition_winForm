@@ -20,7 +20,7 @@ namespace etat_transition_winForm
         {
             cnx.Open();
             cmd.Connection = cnx;
-            cmd.CommandText = "insert into student(student_id, nom) values('" + nome + "','" + prenom + "') ";
+            cmd.CommandText = "insert into etudiant(nome, prenom) values('" + nome + "','" + prenom + "') ";
             cmd.ExecuteNonQuery();
             cnx.Close();
         }
@@ -28,13 +28,23 @@ namespace etat_transition_winForm
         internal static void loadEtudiant(ComboBox cbx)
         {
             cnx.Open();
-            cmd.CommandText = "select * from student";
+            cmd.CommandText = "select * from etudiant";
             cmd.Connection = cnx;
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             cbx.DataSource = dt;
-            cbx.DisplayMember = "nom";
-            cbx.ValueMember = "student_id";
+            cbx.DisplayMember = "nome";
+            cbx.ValueMember = "prenom";
+            cnx.Close();
+        }
+        static void focus(string id , TextBox txtNome , TextBox txtPrenom)
+        {
+            cnx.Open();
+            cmd.CommandText = "select * from etudiant where id = "+id ;
+            cmd.Connection = cnx;
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+           
             cnx.Close();
         }
     }

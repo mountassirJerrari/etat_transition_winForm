@@ -68,9 +68,13 @@ namespace etat_transition_winForm
                 if (txtNome.Text != String.Empty && txtPrenom.Text != String.Empty)
                 {
                     SqlServerConnection.insertEtudiant(txtNome.Text, txtPrenom.Text);
-                    normalState();
+                    SqlServerConnection.loadEtudiant(cbxListeEtudiant);
+                    normalState(txtNome.Text);
                     lblNom.Text = String.Empty;
                     lblPrenom.Text = String.Empty;
+                    
+
+
                 }
                 else
                 {
@@ -86,8 +90,12 @@ namespace etat_transition_winForm
         {
             normalState();
         }
-        private void normalState()
+        private void normalState(string  current_etudiant_nome = "")
         {
+            if (current_etudiant_nome != "")
+            {
+                cbxListeEtudiant.SelectedIndex = cbxListeEtudiant.FindStringExact(current_etudiant_nome);
+            }
             cbxListeEtudiant.Enabled = true;
             btnAjoute.Enabled = true;
             btnModifie.Enabled = true;
@@ -132,6 +140,11 @@ namespace etat_transition_winForm
             txtNome.Enabled = true;
             txtPrenom.Enabled = true;
         }
+        public void focus()
+        {
+            
+        }
+        
 
     }
 }
