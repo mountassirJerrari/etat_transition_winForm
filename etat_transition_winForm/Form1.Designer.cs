@@ -38,7 +38,6 @@
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -46,7 +45,7 @@
             // cbxListeEtudiant
             // 
             this.cbxListeEtudiant.FormattingEnabled = true;
-            this.cbxListeEtudiant.Location = new System.Drawing.Point(366, 163);
+            this.cbxListeEtudiant.Location = new System.Drawing.Point(291, 128);
             this.cbxListeEtudiant.MaxDropDownItems = 5;
             this.cbxListeEtudiant.Name = "cbxListeEtudiant";
             this.cbxListeEtudiant.Size = new System.Drawing.Size(205, 21);
@@ -55,7 +54,7 @@
             // 
             // btnAjoute
             // 
-            this.btnAjoute.Location = new System.Drawing.Point(70, 358);
+            this.btnAjoute.Location = new System.Drawing.Point(38, 301);
             this.btnAjoute.Name = "btnAjoute";
             this.btnAjoute.Size = new System.Drawing.Size(75, 23);
             this.btnAjoute.TabIndex = 1;
@@ -65,7 +64,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(366, 358);
+            this.btnSave.Location = new System.Drawing.Point(334, 301);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
@@ -75,7 +74,7 @@
             // 
             // btnSupp
             // 
-            this.btnSupp.Location = new System.Drawing.Point(265, 358);
+            this.btnSupp.Location = new System.Drawing.Point(233, 301);
             this.btnSupp.Name = "btnSupp";
             this.btnSupp.Size = new System.Drawing.Size(75, 23);
             this.btnSupp.TabIndex = 3;
@@ -85,7 +84,7 @@
             // 
             // btnModifie
             // 
-            this.btnModifie.Location = new System.Drawing.Point(164, 358);
+            this.btnModifie.Location = new System.Drawing.Point(132, 301);
             this.btnModifie.Name = "btnModifie";
             this.btnModifie.Size = new System.Drawing.Size(75, 23);
             this.btnModifie.TabIndex = 4;
@@ -95,7 +94,7 @@
             // 
             // btnAnnule
             // 
-            this.btnAnnule.Location = new System.Drawing.Point(476, 358);
+            this.btnAnnule.Location = new System.Drawing.Point(444, 301);
             this.btnAnnule.Name = "btnAnnule";
             this.btnAnnule.Size = new System.Drawing.Size(75, 23);
             this.btnAnnule.TabIndex = 5;
@@ -105,7 +104,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(164, 168);
+            this.txtNome.Location = new System.Drawing.Point(89, 129);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(159, 20);
             this.txtNome.TabIndex = 6;
@@ -113,7 +112,7 @@
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(164, 220);
+            this.txtPrenom.Location = new System.Drawing.Point(89, 181);
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(159, 20);
             this.txtPrenom.TabIndex = 7;
@@ -123,7 +122,7 @@
             // 
             this.lblNom.AutoSize = true;
             this.lblNom.ForeColor = System.Drawing.Color.Red;
-            this.lblNom.Location = new System.Drawing.Point(161, 142);
+            this.lblNom.Location = new System.Drawing.Point(86, 103);
             this.lblNom.Name = "lblNom";
             this.lblNom.Size = new System.Drawing.Size(0, 13);
             this.lblNom.TabIndex = 8;
@@ -132,24 +131,15 @@
             // 
             this.lblPrenom.AutoSize = true;
             this.lblPrenom.ForeColor = System.Drawing.Color.Red;
-            this.lblPrenom.Location = new System.Drawing.Point(161, 204);
+            this.lblPrenom.Location = new System.Drawing.Point(86, 165);
             this.lblPrenom.Name = "lblPrenom";
             this.lblPrenom.Size = new System.Drawing.Size(0, 13);
             this.lblPrenom.TabIndex = 9;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "label1";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(110, 171);
+            this.label2.Location = new System.Drawing.Point(35, 132);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 11;
@@ -159,7 +149,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(110, 220);
+            this.label3.Location = new System.Drawing.Point(35, 181);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 12;
@@ -170,10 +160,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 450);
+            this.ClientSize = new System.Drawing.Size(546, 385);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPrenom);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.txtPrenom);
@@ -204,7 +193,6 @@
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblPrenom;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
     }
