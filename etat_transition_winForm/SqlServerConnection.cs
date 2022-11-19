@@ -27,7 +27,16 @@ namespace etat_transition_winForm
            
         }
 
-        internal static void loadEtudiant(ComboBox cbx , TextBox tNome , TextBox tPrenom)
+        internal static void deleteEtudiant(string id)
+        {
+            cnx.Open();
+            cmd.Connection = cnx;
+            cmd.CommandText = "delete from etudiant  where id ="+id+";";
+            cmd.ExecuteNonQuery();
+            cnx.Close();
+        }
+
+        internal static void loadEtudiant(ComboBox cbx )
         {
             cnx.Open();
             cmd.CommandText = "select * from etudiant";
@@ -38,11 +47,18 @@ namespace etat_transition_winForm
             cbx.DisplayMember = "nome";
             cbx.ValueMember = "id";
             
-            tPrenom.DataBindings.Add(new Binding("Text", dt, "prenom"));
-            tNome.DataBindings.Add(new Binding("Text", dt, "nome"));
+           
 
             cnx.Close();
         }
-        
+
+        internal static void updateEtudiant(string id, string nome, string prenom)
+        {
+            cnx.Open();
+            cmd.Connection = cnx;
+            cmd.CommandText = "UPDATE etudiant SET nome = '"+nome+ "' , prenom = '"+prenom+"' WHERE id="+id+";";
+            cmd.ExecuteNonQuery();
+            cnx.Close();
+        }
     }
 }

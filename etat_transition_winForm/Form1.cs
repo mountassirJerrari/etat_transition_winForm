@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace etat_transition_winForm
 {
@@ -22,8 +23,11 @@ namespace etat_transition_winForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SqlServerConnection.loadEtudiant(cbxListeEtudiant, txtNome ,txtPrenom);
-           
+            SqlServerConnection.loadEtudiant(cbxListeEtudiant);
+            txtPrenom.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "prenom"));
+            txtNome.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "nome"));
+            normalState();
+
         }
 
         private void cbxListeEtudiant_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,15 +54,31 @@ namespace etat_transition_winForm
 
         private void btnModifie_Click(object sender, EventArgs e)
         {
-            updateState();
-            currentState = "update";
+            
+            if (cbxListeEtudiant.Items.Count > 0)
+            {
+                updateState();
+                currentState = "update";
+            }
+            else
+            {
+                MessageBox.Show("aucun element a supprimé");
+            }
 
         }
 
         private void btnSupp_Click(object sender, EventArgs e)
         {
-            updateState();
-            currentState = "delete";
+            if (cbxListeEtudiant.Items.Count>0)
+            {
+                deleteState();
+                currentState = "delete";
+            }
+            else
+            {
+                MessageBox.Show("aucun element a supprimé");
+            }
+           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -68,11 +88,12 @@ namespace etat_transition_winForm
                 if (txtNome.Text != String.Empty && txtPrenom.Text != String.Empty)
                 {
                     SqlServerConnection.insertEtudiant(txtNome.Text, txtPrenom.Text);
-                    SqlServerConnection.loadEtudiant(cbxListeEtudiant, txtNome, txtPrenom);
+                    SqlServerConnection.loadEtudiant(cbxListeEtudiant);
                     normalState(txtNome.Text);
                     lblNom.Text = String.Empty;
                     lblPrenom.Text = String.Empty;
-                    
+                  
+
 
 
                 }
@@ -83,6 +104,34 @@ namespace etat_transition_winForm
                 }
                    
 
+            }
+
+            if(currentState ==  "delete")
+            {
+                if (MessageBox.Show("voulez vraiment supprimer cette etudiant", "confirmation dailogue",MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes && cbxListeEtudiant.Items.Count>0)
+                {
+                    SqlServerConnection.deleteEtudiant(cbxListeEtudiant.SelectedValue.ToString());
+                    SqlServerConnection.loadEtudiant(cbxListeEtudiant);
+                    normalState();
+                    txtNome.DataBindings.Clear();
+                    txtPrenom.DataBindings.Clear();
+                    txtPrenom.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "prenom"));
+                    txtNome.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "nome"));
+                }
+                
+
+
+
+            }
+            if (currentState=="update")
+            {
+                SqlServerConnection.updateEtudiant(cbxListeEtudiant.SelectedValue.ToString(), txtNome.Text, txtPrenom.Text);
+                SqlServerConnection.loadEtudiant(cbxListeEtudiant);
+                normalState();
+                txtNome.DataBindings.Clear();
+                txtPrenom.DataBindings.Clear();
+                txtPrenom.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "prenom"));
+                txtNome.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "nome"));
             }
         }
 
@@ -96,10 +145,6 @@ namespace etat_transition_winForm
             if (current_etudiant_nome != ""  )
             {
                 cbxListeEtudiant.SelectedIndex = cbxListeEtudiant.FindStringExact(current_etudiant_nome);
-            }else
-            {
-                txtPrenom.Text = String.Empty;
-                txtNome.Text = String.Empty;
             }
             cbxListeEtudiant.Enabled = true;
             btnAjoute.Enabled = true;
@@ -109,8 +154,7 @@ namespace etat_transition_winForm
             btnAnnule.Enabled = false;
             txtNome.Enabled = false;
             txtPrenom.Enabled = false;
-            lblNom.Text = String.Empty;
-            lblPrenom.Text= String.Empty;   
+               
         }
         private void insertState()
         {
@@ -140,7 +184,8 @@ namespace etat_transition_winForm
             txtNome.Enabled = true;
             txtPrenom.Enabled = true;
         }
-        private void modifyState()
+       
+        private void deleteState()
         {
             cbxListeEtudiant.Enabled = false;
             btnAjoute.Enabled = false;
@@ -148,8 +193,8 @@ namespace etat_transition_winForm
             btnSupp.Enabled = false;
             btnSave.Enabled = true;
             btnAnnule.Enabled = true;
-            txtNome.Enabled = true;
-            txtPrenom.Enabled = true;
+            txtNome.Enabled = false;
+            txtPrenom.Enabled = false;
         }
 
         private void label2_Click(object sender, EventArgs e)
