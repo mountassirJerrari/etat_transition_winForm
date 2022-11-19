@@ -139,6 +139,8 @@ namespace etat_transition_winForm
         {
             normalState();
         }
+
+        // les fonctions la bas decrient les different etat d l application winform 
         private void normalState(string  current_etudiant_nome = "")
         {
            
