@@ -38,12 +38,16 @@
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbxListeEtudiant
             // 
             this.cbxListeEtudiant.FormattingEnabled = true;
-            this.cbxListeEtudiant.Location = new System.Drawing.Point(325, 91);
+            this.cbxListeEtudiant.Location = new System.Drawing.Point(366, 163);
+            this.cbxListeEtudiant.MaxDropDownItems = 5;
             this.cbxListeEtudiant.Name = "cbxListeEtudiant";
             this.cbxListeEtudiant.Size = new System.Drawing.Size(205, 21);
             this.cbxListeEtudiant.TabIndex = 0;
@@ -101,7 +105,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(80, 169);
+            this.txtNome.Location = new System.Drawing.Point(164, 168);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(159, 20);
             this.txtNome.TabIndex = 6;
@@ -109,7 +113,7 @@
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(80, 236);
+            this.txtPrenom.Location = new System.Drawing.Point(164, 220);
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(159, 20);
             this.txtPrenom.TabIndex = 7;
@@ -119,7 +123,7 @@
             // 
             this.lblNom.AutoSize = true;
             this.lblNom.ForeColor = System.Drawing.Color.Red;
-            this.lblNom.Location = new System.Drawing.Point(80, 150);
+            this.lblNom.Location = new System.Drawing.Point(161, 142);
             this.lblNom.Name = "lblNom";
             this.lblNom.Size = new System.Drawing.Size(0, 13);
             this.lblNom.TabIndex = 8;
@@ -128,16 +132,48 @@
             // 
             this.lblPrenom.AutoSize = true;
             this.lblPrenom.ForeColor = System.Drawing.Color.Red;
-            this.lblPrenom.Location = new System.Drawing.Point(80, 220);
+            this.lblPrenom.Location = new System.Drawing.Point(161, 204);
             this.lblPrenom.Name = "lblPrenom";
             this.lblPrenom.Size = new System.Drawing.Size(0, 13);
             this.lblPrenom.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(110, 171);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "nom :";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(110, 220);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "prenom :";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPrenom);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.txtPrenom);
@@ -168,6 +204,9 @@
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblPrenom;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

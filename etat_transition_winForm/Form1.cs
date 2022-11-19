@@ -22,13 +22,13 @@ namespace etat_transition_winForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SqlServerConnection.loadEtudiant(cbxListeEtudiant);
-            normalState();
+            SqlServerConnection.loadEtudiant(cbxListeEtudiant, txtNome ,txtPrenom);
+           
         }
 
         private void cbxListeEtudiant_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace etat_transition_winForm
                 if (txtNome.Text != String.Empty && txtPrenom.Text != String.Empty)
                 {
                     SqlServerConnection.insertEtudiant(txtNome.Text, txtPrenom.Text);
-                    SqlServerConnection.loadEtudiant(cbxListeEtudiant);
+                    SqlServerConnection.loadEtudiant(cbxListeEtudiant, txtNome, txtPrenom);
                     normalState(txtNome.Text);
                     lblNom.Text = String.Empty;
                     lblPrenom.Text = String.Empty;
@@ -92,9 +92,14 @@ namespace etat_transition_winForm
         }
         private void normalState(string  current_etudiant_nome = "")
         {
-            if (current_etudiant_nome != "")
+           
+            if (current_etudiant_nome != ""  )
             {
                 cbxListeEtudiant.SelectedIndex = cbxListeEtudiant.FindStringExact(current_etudiant_nome);
+            }else
+            {
+                txtPrenom.Text = String.Empty;
+                txtNome.Text = String.Empty;
             }
             cbxListeEtudiant.Enabled = true;
             btnAjoute.Enabled = true;
@@ -104,9 +109,14 @@ namespace etat_transition_winForm
             btnAnnule.Enabled = false;
             txtNome.Enabled = false;
             txtPrenom.Enabled = false;
+            lblNom.Text = String.Empty;
+            lblPrenom.Text= String.Empty;   
         }
         private void insertState()
         {
+            cbxListeEtudiant.SelectedIndex = -1;
+            txtPrenom.Text = String.Empty;
+            txtNome.Text = String.Empty;
             cbxListeEtudiant.SelectedItem = null;
             cbxListeEtudiant.Enabled = false;
             btnAjoute.Enabled = false;
@@ -116,6 +126,7 @@ namespace etat_transition_winForm
             btnAnnule.Enabled = true;
             txtNome.Enabled = true;
             txtPrenom.Enabled=true;
+            
         }
         private void updateState()
         {
@@ -140,11 +151,15 @@ namespace etat_transition_winForm
             txtNome.Enabled = true;
             txtPrenom.Enabled = true;
         }
-        public void focus()
-        {
-            
-        }
-        
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

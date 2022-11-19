@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace etat_transition_winForm
            
         }
 
-        internal static void loadEtudiant(ComboBox cbx)
+        internal static void loadEtudiant(ComboBox cbx , TextBox tNome , TextBox tPrenom)
         {
             cnx.Open();
             cmd.CommandText = "select * from etudiant";
@@ -35,25 +36,13 @@ namespace etat_transition_winForm
             adapter.Fill(dt);
             cbx.DataSource = dt;
             cbx.DisplayMember = "nome";
-            cbx.ValueMember = "prenom";
-            MessageBox.Show(dt.ToString());
-            cnx.Close();
-        }
-        static void focus(string nome , TextBox txtNome , TextBox txtPrenom)
-        {
-            cnx.Open();
-            cmd.CommandText = "select * from etudiant where id = "+nome ;
-            cmd.Connection = cnx;
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            foreach (DataRow row in dt.Rows)
-            {
-                txtNome.Text = row["nome"].ToString();
-                txtPrenom.Text = row["prenom"].ToString();
-                
-            }
+            cbx.ValueMember = "id";
+            
+            tPrenom.DataBindings.Add(new Binding("Text", dt, "prenom"));
+            tNome.DataBindings.Add(new Binding("Text", dt, "nome"));
 
             cnx.Close();
         }
+        
     }
 }
