@@ -89,7 +89,10 @@ namespace etat_transition_winForm
                 {
                     SqlServerConnection.insertEtudiant(txtNome.Text, txtPrenom.Text);
                     SqlServerConnection.loadEtudiant(cbxListeEtudiant);
+                    
+
                     normalState(txtNome.Text);
+
                     lblNom.Text = String.Empty;
                     lblPrenom.Text = String.Empty;
                   
@@ -127,7 +130,7 @@ namespace etat_transition_winForm
             {
                 SqlServerConnection.updateEtudiant(cbxListeEtudiant.SelectedValue.ToString(), txtNome.Text, txtPrenom.Text);
                 SqlServerConnection.loadEtudiant(cbxListeEtudiant);
-                normalState();
+                normalState(txtNome.Text);
                 txtNome.DataBindings.Clear();
                 txtPrenom.DataBindings.Clear();
                 txtPrenom.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "prenom"));
@@ -146,7 +149,12 @@ namespace etat_transition_winForm
            
             if (current_etudiant_nome != ""  )
             {
+                txtNome.DataBindings.Clear();
+                txtPrenom.DataBindings.Clear();
+                txtPrenom.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "prenom"));
+                txtNome.DataBindings.Add(new Binding("Text", cbxListeEtudiant.DataSource, "nome"));
                 cbxListeEtudiant.SelectedIndex = cbxListeEtudiant.FindStringExact(current_etudiant_nome);
+
             }
             cbxListeEtudiant.Enabled = true;
             btnAjoute.Enabled = true;
